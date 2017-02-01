@@ -2,4 +2,5 @@
 For ideas and notes and experimenting.
 
 - Not a chance
-- Just commit and forget
+- let's delete this if we finished
+
