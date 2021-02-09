@@ -1,4 +1,4 @@
 settings.json
-Sorting/workspace.code-workspace
-core/__pycache__/graph.cpython-38.pyc
-core/__pycache__/queue.cpython-38.pyc
+workspace.code-workspace
+__pycache__/
+practice/

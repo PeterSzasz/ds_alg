@@ -1,21 +1,16 @@
 # Most basic version of a Merges sort.
 
 def sort(data):
-
     if len(data) > 1:
- 
         # split input
         mid = len(data)//2
         left_half = data[:mid]
-        right_half = data[mid:]
- 
+        right_half = data[mid:] 
         sort(left_half)
-        sort(right_half)
- 
+        sort(right_half) 
         i = 0
         j = 0
         k = 0
-
         # merging together
         while i < len(left_half) and j < len(right_half):
             if left_half[i] < right_half[j]:
@@ -25,7 +20,6 @@ def sort(data):
                 data[k] = right_half[j]
                 j += 1
             k += 1
-
         # checking if any element was left
         while i < len(left_half):
             data[k] = left_half[i]
@@ -36,7 +30,6 @@ def sort(data):
             data[k] = right_half[j]
             j += 1
             k += 1
-
     return data
 
 
