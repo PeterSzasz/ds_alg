@@ -1,14 +1,12 @@
-# simple stack module
-
 class list_element:
-    '''a singly linked list like object'''
+    '''A singly linked list like object.'''
     def __init__(self, data) -> None:
         self.data = data
         self.next = None
 
 
 class stack:
-    '''simple stack, with push n pop n peek'''
+    '''Simple stack, with push, pop, peek.'''
 
     def __init__(self):
         self.head = list_element("head")
@@ -39,6 +37,14 @@ class stack:
     def empty(self):
         return self.size == 0
 
+    def __str__(self):
+        result = ""
+        element = self.head
+        while element != None:
+            result += str(element.data) + " "
+            element = element.next
+        return result
+
 
 if __name__ == "__main__":
     s = stack()
@@ -46,6 +52,9 @@ if __name__ == "__main__":
     for i in range(10):
         s.push(i)
         print(s.peek(), end=" ")
+    print()
+
+    print(f"print: {s}")
 
     print("\nunload")
     for i in range(10):

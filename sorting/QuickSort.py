@@ -1,8 +1,11 @@
-# First version of a quicksort algorithm.
-
-import time
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+from core.stack import stack
 
 def sort(data: list):
+    '''Simple recursive version of a quicksort algorithm.'''
     if len(data) == 1:
         return data
     pivot_point = data[-1]
@@ -12,15 +15,13 @@ def sort(data: list):
     res2 = []
     result = None
 
-    # divide
-    for i, e in enumerate(data):
+    for i, e in enumerate(data):    # divide
         if e < pivot_point:
             less_than.append(data[i])
         if e > pivot_point:
             more_than.append(data[i])
 
-    # re-call oneself
-    if less_than:
+    if less_than:                   # re-call oneself
         res1 = sort(less_than)
     if more_than:
         res2 = sort(more_than)
@@ -28,13 +29,12 @@ def sort(data: list):
     return result
 
 def divide(data: list, begin: int, end: int):
-    '''partitions a list on a selected pivot value
-       puts the pivot value to its correct place
+    '''Partitions a list on a selected pivot value,
+       puts the pivot value to its correct place.
     '''
     pivot = data[end]
     j = begin - 1
     for i in range(begin, end):
-        print(i)
         if data[i] <= pivot:
             j += 1
             data[j], data[i] = data[i], data[j]
@@ -43,27 +43,29 @@ def divide(data: list, begin: int, end: int):
     return j + 1
 
 def sort_iterative(data: list, begin: int, end: int):
-    #if end > len(data): end = len(data)
-    stack = []
-    stack.append(begin)
-    stack.append(end)
-    
-    while end >= 0:
-        print("data:  " + str(data))
-        print("stack: " + str(stack))
+    '''Iterative version of quicksort using a stack.'''
+    s = stack()
+    s.push(begin)
+    s.push(end)
+    print(f"init: {s}")
 
-        begin = stack.pop()
-        end = stack.pop()
+    while end > 1:
+        print(f"data:  {str(data)}")
+        print(f"stack: {s}")
+
+        end = s.pop()
+        begin = s.pop()
         pivot = divide(data, begin, end)
+        print(f"pivot: {pivot}, begin: {begin}, end: {end}")
         
         if pivot - 1 > begin:
-            stack.append(begin)
-            stack.append(pivot - 1)
-
+            s.push(begin)
+            s.push(pivot - 1)
+        
         if pivot + 1 < end:
-            stack.append(pivot + 1)
-            stack.append(end)
-    
+            s.push(pivot + 1)
+            s.push(end)
+            
     return data
 
 

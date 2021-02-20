@@ -1,8 +1,11 @@
-# singly and doubly linked list
-# with add to head and tail, remove nth
-
 class LinkedList_singly():
+    '''
+    A singly linked list with traverse options,
+    and methods for inserting nodes after head, at the end or on n-th position.
+    Can delete node on n-th position.
+    '''
     class Node():
+        '''Node for singly linked list, only the next node linked.'''
         def __init__(self, data, next = None):
             self.data = data
             self.next = next
@@ -19,6 +22,7 @@ class LinkedList_singly():
         self.head.next = self.tail
 
     def next_node(self):
+        '''generator method, starts from the head'''
         n = self.head
         while n != None:
             yield n
@@ -79,10 +83,14 @@ class LinkedList_singly():
             prev_node = node
 
 
-
-
 class LinkedList_doubly(LinkedList_singly):
+    '''
+    A doubly linked list with traverse options (both directions),
+    and methods for inserting nodes after head, at the end or on n-th position.
+    Can delete node on n-th position.
+    '''
     class DNode():
+        '''Node for doubly linked lists, the next and previous nodes are linked.'''
         def __init__(self, data, prev = None, next = None):
             self.data = data
             self.next=next
@@ -121,7 +129,7 @@ class LinkedList_doubly(LinkedList_singly):
         last_node.next = new_node
 
     def add_nth_node(self, data, n):
-        '''adds a node to the n-th place and shifts up remaining nodes'''
+        '''Adds a node to the n-th place and shifts up remaining nodes.'''
         if n == 0:
             raise("Cannot replace head node!")
         if n == 2 + self.size():
@@ -137,6 +145,7 @@ class LinkedList_doubly(LinkedList_singly):
             i += 1
 
     def remove_node(self, n):
+        '''Removes n-th node if valid.'''
         if n == 0:
             raise("Cannot delete head node!")
         if n == 1 + self.size():

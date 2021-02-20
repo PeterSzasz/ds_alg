@@ -1,6 +1,6 @@
-# Simple cocktail sort.
 
 def sort(data):
+    '''Simple cocktail sort.'''
     swapped = True
     while swapped:
         swapped = False

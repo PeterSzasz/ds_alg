@@ -1,6 +1,5 @@
-# simple heap sort
-
 def heapify(data, n, i):
+    '''Heap sort helper function. Reorders the heap.'''
     largest = i
     l = 2 * i + 1
     r = 2 * i + 2
@@ -13,6 +12,7 @@ def heapify(data, n, i):
         heapify(data, n, largest) 
  
 def sort(data):
+    '''Simple heap sort.'''
     n = len(data)
     for i in range(n//2 - 1, -1, -1):
         heapify(data, n, i)

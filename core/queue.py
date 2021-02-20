@@ -1,7 +1,5 @@
-# simple double-ended queue
-
 class queue:
-    '''simple queue with enqueue, dequeue, peek'''
+    '''Simple queue with enqueue, dequeue, peek.'''
 
     def __init__(self) -> None:
         self.data = []
